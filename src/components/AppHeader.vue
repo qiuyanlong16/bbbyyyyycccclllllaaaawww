@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n';
 import { toggleLocale } from '../i18n';
 
 const { t, locale } = useI18n();
-const emit = defineEmits<{ (e: 'ecosystem'): void }>();
+const ecosystemUrl = import.meta.env.VITE_ECOSYSTEM_URL || 'https://chat.z.ai/auth';
 
 const isZh = computed(() => locale.value === 'zh');
 const isEn = computed(() => locale.value === 'en');
@@ -23,9 +23,9 @@ const isEn = computed(() => locale.value === 'en');
           {{ t('lang.en') }}
         </button>
       </div>
-      <button class="btn-glass btn-ecosystem" @click="emit('ecosystem')">
+      <a class="btn-glass btn-ecosystem" :href="ecosystemUrl" target="_blank" rel="noopener">
         {{ t('hero.ecosystem') }}
-      </button>
+      </a>
     </div>
   </header>
 </template>

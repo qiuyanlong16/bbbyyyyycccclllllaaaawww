@@ -10,13 +10,13 @@ const loginOpen = ref(false);
 
 <template>
   <div class="app">
-    <AppHeader @ecosystem="loginOpen = true" />
+    <AppHeader />
     <main class="main">
-      <HeroSection @ecosystem="loginOpen = true" />
+      <HeroSection @docs="loginOpen = true" />
     </main>
     <AppFooter />
 
-    <TokenLoginModal :open="loginOpen" @close="loginOpen = false" @success="loginOpen = false" />
+    <TokenLoginModal :open="loginOpen" @close="loginOpen = false" />
   </div>
 </template>
 

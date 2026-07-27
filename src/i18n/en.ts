@@ -9,7 +9,7 @@ export default {
     docsSoon: 'Coming Soon',
   },
   login: {
-    title: 'Sign in to Developer Ecosystem',
+    title: 'Sign in to Developer Docs',
     label: 'GitLab Personal Access Token',
     placeholder: 'Enter your GitLab Personal Access Token',
     submit: 'Verify & Continue',
@@ -23,6 +23,7 @@ export default {
       'Create a token with the read_api scope and an expiry',
       'Copy it immediately (shown once) and paste above',
     ],
+    helpNote: 'Internal only — no VPN? Contact qiuyanlong or zhangyujie for a free token',
     fillTestToken: 'Fill test token',
     errors: {
       invalid: 'Token is invalid or expired',

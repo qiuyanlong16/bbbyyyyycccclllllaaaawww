@@ -5,7 +5,7 @@ import { validateToken, type TokenError } from '../lib/gitlab';
 import { saveAuth } from '../composables/useAuth';
 
 const props = defineProps<{ open: boolean }>();
-const emit = defineEmits<{ (e: 'close'): void; (e: 'success'): void }>();
+const emit = defineEmits<{ (e: 'close'): void }>();
 
 const { t, tm } = useI18n();
 const token = ref('');
@@ -14,7 +14,7 @@ const errorKey = ref<TokenError | 'empty' | null>(null);
 const showHelp = ref(false);
 
 const gitlabUrl = import.meta.env.VITE_GITLAB_URL;
-const partnerUrl = import.meta.env.VITE_PARTNER_URL;
+const docsUrl = import.meta.env.VITE_DOCS_URL || '';
 const testToken = import.meta.env.DEV ? import.meta.env.VITE_TEST_TOKEN || '' : '';
 
 const errorMsg = computed(() => (errorKey.value ? t(`login.errors.${errorKey.value}`) : ''));
@@ -30,8 +30,7 @@ async function submit() {
   submitting.value = false;
   if (result.ok && result.user) {
     saveAuth(token.value.trim(), result.user);
-    emit('success');
-    window.location.href = partnerUrl;
+    window.location.href = docsUrl || 'https://chat.z.ai/auth';
     return;
   }
   errorKey.value = result.error ?? 'unknown';
@@ -86,6 +85,7 @@ function fillTest() {
       <ol v-if="showHelp" class="help">
         <li v-for="(s, i) in helpSteps" :key="i">{{ s }}</li>
       </ol>
+      <p v-if="showHelp" class="help-note">{{ t('login.helpNote') }}</p>
     </div>
   </div>
 </template>
@@ -143,6 +143,17 @@ function fillTest() {
   font-size: 13px; cursor: pointer; padding: 0;
 }
 .help { margin: 10px 0 0; padding-left: 18px; color: var(--text-muted); font-size: 12px; line-height: 1.7; }
+.help-note {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  background: rgba(255, 100, 100, 0.08);
+  border-left: 3px solid #ff6464;
+  border-radius: 4px;
+  color: #ff6464;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.6;
+}
 @media (max-width: 480px) {
   .modal-backdrop { align-items: flex-end; padding: 0; }
   .modal-card {

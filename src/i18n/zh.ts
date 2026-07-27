@@ -9,7 +9,7 @@ export default {
     docsSoon: '即将上线',
   },
   login: {
-    title: '登录开发者生态',
+    title: '登录开发者文档',
     label: 'GitLab Personal Access Token',
     placeholder: '请输入 GitLab Personal Access Token',
     submit: '校验并进入',
@@ -23,6 +23,7 @@ export default {
       '新建 Token，勾选 read_api 作用域，设过期时间',
       '创建后立即复制（仅显示一次），粘贴到上方输入框',
     ],
+    helpNote: '暂不支持对外开放，无 VPN 用户内部联系 qiuyanlong 或 zhangyujie 获取免费 token',
     fillTestToken: '填入测试 Token',
     errors: {
       invalid: 'Token 无效或已过期',

@@ -3,9 +3,10 @@ import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
-defineEmits<{ (e: 'ecosystem'): void }>();
+defineEmits<{ (e: 'docs'): void }>();
 
-const docsUrl = import.meta.env.VITE_DOCS_URL || '';
+const ecosystemUrl = import.meta.env.VITE_ECOSYSTEM_URL || 'https://chat.z.ai/auth';
+
 const reducedMotion =
   typeof window !== 'undefined' &&
   window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
@@ -36,19 +37,17 @@ const useVideo = !reducedMotion && !saveData;
       <h1 class="title">{{ t('hero.title') }}</h1>
       <p class="subtitle">{{ t('hero.subtitle') }}</p>
       <div class="cta-row">
+        <button class="btn-glass btn-primary" @click="$emit('docs')">
+          {{ t('hero.docs') }}
+        </button>
         <a
-          v-if="docsUrl"
-          class="btn-glass btn-primary"
-          :href="docsUrl"
+          class="btn-glass"
+          :href="ecosystemUrl"
           target="_blank"
           rel="noopener"
-        >{{ t('hero.docs') }}</a>
-        <button v-else class="btn-glass btn-primary" disabled :title="t('hero.docsSoon')">
-          {{ t('hero.docs') }} · {{ t('hero.docsSoon') }}
-        </button>
-        <button class="btn-glass" @click="$emit('ecosystem')">
+        >
           {{ t('hero.ecosystem') }}
-        </button>
+        </a>
       </div>
     </div>
   </section>

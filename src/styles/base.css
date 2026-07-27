@@ -53,6 +53,7 @@ button {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+  text-decoration: none;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transition: background 0.2s, transform 0.2s;
@@ -74,4 +75,16 @@ button {
 }
 .btn-primary:hover {
   background: #fff;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

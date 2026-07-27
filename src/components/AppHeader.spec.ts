@@ -22,9 +22,11 @@ describe('AppHeader', () => {
     expect(w.find('button.lang-en').classes()).toContain('active');
   });
 
-  it('emits ecosystem event when ecosystem button clicked', async () => {
+  it('ecosystem link points to chat.z.ai/auth', () => {
     const w = mount(AppHeader, { global: { plugins: [i18n] } });
-    await w.find('.btn-ecosystem').trigger('click');
-    expect(w.emitted('ecosystem')).toBeTruthy();
+    const a = w.find('a.btn-ecosystem');
+    expect(a.exists()).toBe(true);
+    expect(a.attributes('href')).toBe('https://chat.z.ai/auth');
+    expect(a.attributes('target')).toBe('_blank');
   });
 });
