@@ -1,0 +1,42 @@
+export default {
+  brand: { tagline: '智能体平台' },
+  hero: {
+    title: '百应开发者',
+    subtitle: '构建、部署与协作的 AI Agent 工作台',
+    docs: '开发者文档',
+    ecosystem: '开发者生态',
+    watchFull: '观看完整版',
+    docsSoon: '即将上线',
+  },
+  login: {
+    title: '登录开发者生态',
+    label: 'GitLab Personal Access Token',
+    placeholder: '请输入 GitLab Personal Access Token',
+    submit: '校验并进入',
+    submitting: '校验中…',
+    paste: '粘贴',
+    clear: '清空',
+    helpTitle: '如何获取 Token？',
+    helpSteps: [
+      '登录内部 GitLab（gitlab.lenovohuishang.com）',
+      '头像 → Preferences → Access Tokens',
+      '新建 Token，勾选 read_api 作用域，设过期时间',
+      '创建后立即复制（仅显示一次），粘贴到上方输入框',
+    ],
+    fillTestToken: '填入测试 Token',
+    errors: {
+      invalid: 'Token 无效或已过期',
+      forbidden: 'Token 权限不足，请确认已勾选 read_api',
+      inactive: '该账号未激活',
+      network: '无法连接 GitLab，请检查网络或 VPN',
+      unknown: '校验失败，请稍后重试',
+      empty: '请先输入 Token',
+    },
+  },
+  footer: {
+    docs: '开发者文档',
+    ecosystem: '开发者生态',
+    copyright: '© Lenovo Baiying',
+  },
+  lang: { zh: '中', en: 'EN' },
+};

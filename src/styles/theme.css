@@ -1,0 +1,18 @@
+:root {
+  --bg: #02020f;
+  --bg-gradient: linear-gradient(133deg, #020202, #020216);
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --text-faint: rgba(255, 255, 255, 0.4);
+  --glass: rgba(255, 255, 255, 0.1);
+  --glass-hover: rgba(255, 255, 255, 0.18);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-strong: rgba(255, 255, 255, 0.92);
+  --nav-btn: #474747;
+  --danger: #e60012;
+  --radius-pill: 40px;
+  --radius-card: 16px;
+  --scrim: linear-gradient(180deg, rgba(2, 2, 15, 0.45), rgba(2, 2, 15, 0.82));
+  --font: "PingFang SC", "Source Han Sans SC", system-ui, -apple-system,
+    "Microsoft YaHei", sans-serif;
+}

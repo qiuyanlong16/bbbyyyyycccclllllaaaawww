@@ -1,0 +1,21 @@
+node_modules
+dist
+dist-ssr
+*.local
+.env.local
+.env.*.local
+.vite
+.superpowers
+raw/*.mp4
+public/videos/*.mp4
+public/images/poster.png
+*.log
+.DS_Store
+
+# research / verification artifacts (local only)
+ref-*.png
+ref-*.ico
+verify-*.png
+
+# tsc build info
+*.tsbuildinfo

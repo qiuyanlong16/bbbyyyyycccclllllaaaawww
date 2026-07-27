@@ -1,0 +1,42 @@
+export default {
+  brand: { tagline: 'Agent Platform' },
+  hero: {
+    title: 'Baiying Developer',
+    subtitle: 'Build, deploy and collaborate on AI Agents',
+    docs: 'Developer Docs',
+    ecosystem: 'Developer Ecosystem',
+    watchFull: 'Watch Full Video',
+    docsSoon: 'Coming Soon',
+  },
+  login: {
+    title: 'Sign in to Developer Ecosystem',
+    label: 'GitLab Personal Access Token',
+    placeholder: 'Enter your GitLab Personal Access Token',
+    submit: 'Verify & Continue',
+    submitting: 'Verifying…',
+    paste: 'Paste',
+    clear: 'Clear',
+    helpTitle: 'How to get a token?',
+    helpSteps: [
+      'Sign in to internal GitLab (gitlab.lenovohuishang.com)',
+      'Avatar → Preferences → Access Tokens',
+      'Create a token with the read_api scope and an expiry',
+      'Copy it immediately (shown once) and paste above',
+    ],
+    fillTestToken: 'Fill test token',
+    errors: {
+      invalid: 'Token is invalid or expired',
+      forbidden: 'Insufficient scope — please enable read_api',
+      inactive: 'This account is not active',
+      network: 'Cannot reach GitLab — check network or VPN',
+      unknown: 'Verification failed, please retry',
+      empty: 'Please enter a token first',
+    },
+  },
+  footer: {
+    docs: 'Developer Docs',
+    ecosystem: 'Developer Ecosystem',
+    copyright: '© Lenovo Baiying',
+  },
+  lang: { zh: '中', en: 'EN' },
+};
