@@ -1,11 +1,11 @@
 export default {
   brand: { tagline: '智能体平台' },
   hero: {
-    title: '百应开发者',
-    subtitle: '构建、部署与协作的 AI Agent 工作台',
+    kicker: '百应 CLAW',
+    title: 'Byclaw',
+    subtitle: '智能体开发者平台 · 构建、部署与协作的 AI Agent 工作台',
     docs: '开发者文档',
     ecosystem: '开发者生态',
-    watchFull: '观看完整版',
     docsSoon: '即将上线',
   },
   login: {
@@ -34,9 +34,7 @@ export default {
     },
   },
   footer: {
-    docs: '开发者文档',
-    ecosystem: '开发者生态',
-    copyright: '© Lenovo Baiying',
+    copyright: 'Byclaw 开发团队 2026.7.17',
   },
   lang: { zh: '中', en: 'EN' },
 };

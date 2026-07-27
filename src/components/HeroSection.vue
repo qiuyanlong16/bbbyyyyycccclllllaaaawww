@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
-defineEmits<{ (e: 'watch-full'): void; (e: 'ecosystem'): void }>();
+defineEmits<{ (e: 'ecosystem'): void }>();
 
 const docsUrl = import.meta.env.VITE_DOCS_URL || '';
 const reducedMotion =
@@ -32,10 +32,9 @@ const useVideo = !reducedMotion && !saveData;
 
     <div class="scrim" />
     <div class="hero-content">
+      <div class="kicker">{{ t('hero.kicker') }}</div>
       <h1 class="title">{{ t('hero.title') }}</h1>
-      <p class="subtitle">
-        {{ t('brand.tagline') }} · {{ t('hero.subtitle') }}
-      </p>
+      <p class="subtitle">{{ t('hero.subtitle') }}</p>
       <div class="cta-row">
         <a
           v-if="docsUrl"
@@ -50,9 +49,6 @@ const useVideo = !reducedMotion && !saveData;
         <button class="btn-glass" @click="$emit('ecosystem')">
           {{ t('hero.ecosystem') }}
         </button>
-        <button class="btn-glass" @click="$emit('watch-full')">
-          ▶ {{ t('hero.watchFull') }}
-        </button>
       </div>
     </div>
   </section>
@@ -61,7 +57,8 @@ const useVideo = !reducedMotion && !saveData;
 <style scoped>
 .hero {
   position: relative;
-  min-height: 100vh;
+  flex: 1;
+  min-height: 0;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -86,19 +83,27 @@ const useVideo = !reducedMotion && !saveData;
   z-index: 2;
   padding: 0 8vw;
   max-width: 1100px;
+  width: 100%;
   animation: fade-up 0.8s ease both;
 }
+.kicker {
+  font-size: clamp(12px, 1.6vw, 15px);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
 .title {
-  font-size: clamp(40px, 7vw, 84px);
+  font-size: clamp(44px, 9vw, 96px);
   font-weight: 800;
   letter-spacing: -0.02em;
   margin: 0 0 14px;
-  line-height: 1.05;
+  line-height: 1;
 }
 .subtitle {
-  font-size: clamp(15px, 2vw, 22px);
+  font-size: clamp(14px, 1.9vw, 21px);
   color: var(--text-muted);
-  margin: 0 0 32px;
+  margin: 0 0 30px;
   max-width: 640px;
 }
 .cta-row {
@@ -115,6 +120,9 @@ const useVideo = !reducedMotion && !saveData;
 }
 @media (max-width: 480px) {
   .hero-content { padding: 0 6vw; }
+  .kicker { margin-bottom: 10px; letter-spacing: 0.24em; }
+  .title { font-size: clamp(40px, 13vw, 64px); margin-bottom: 10px; }
+  .subtitle { margin-bottom: 22px; }
   .cta-row { gap: 10px; }
   .btn-glass { padding: 9px 16px; font-size: 13px; }
 }

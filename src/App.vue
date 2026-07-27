@@ -2,11 +2,9 @@
 import { ref } from 'vue';
 import AppHeader from './components/AppHeader.vue';
 import HeroSection from './components/HeroSection.vue';
-import VideoModal from './components/VideoModal.vue';
 import TokenLoginModal from './components/TokenLoginModal.vue';
 import AppFooter from './components/AppFooter.vue';
 
-const videoOpen = ref(false);
 const loginOpen = ref(false);
 </script>
 
@@ -14,16 +12,25 @@ const loginOpen = ref(false);
   <div class="app">
     <AppHeader @ecosystem="loginOpen = true" />
     <main class="main">
-      <HeroSection @watch-full="videoOpen = true" @ecosystem="loginOpen = true" />
+      <HeroSection @ecosystem="loginOpen = true" />
     </main>
-    <AppFooter @ecosystem="loginOpen = true" />
+    <AppFooter />
 
-    <VideoModal :open="videoOpen" @close="videoOpen = false" />
     <TokenLoginModal :open="loginOpen" @close="loginOpen = false" @success="loginOpen = false" />
   </div>
 </template>
 
 <style scoped>
-.app { min-height: 100vh; display: flex; flex-direction: column; }
-.main { flex: 1; }
+.app {
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
 </style>

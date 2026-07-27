@@ -144,7 +144,17 @@ function fillTest() {
 }
 .help { margin: 10px 0 0; padding-left: 18px; color: var(--text-muted); font-size: 12px; line-height: 1.7; }
 @media (max-width: 480px) {
-  .modal-backdrop { padding: 0; }
-  .modal-card { max-width: none; min-height: 100%; border-radius: 0; padding-top: max(28px, env(safe-area-inset-top)); }
+  .modal-backdrop { align-items: flex-end; padding: 0; }
+  .modal-card {
+    max-width: none; width: 100%; min-height: auto;
+    border-radius: 20px 20px 0 0;
+    padding: 22px 20px max(22px, env(safe-area-inset-bottom));
+    animation: sheet-up 0.25s ease;
+  }
+  .close-btn { top: 12px; right: 12px; }
+  .title { font-size: 18px; margin-bottom: 14px; }
+  .submit { margin-top: 14px; }
+  .help-toggle { margin-top: 14px; }
 }
+@keyframes sheet-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
 </style>

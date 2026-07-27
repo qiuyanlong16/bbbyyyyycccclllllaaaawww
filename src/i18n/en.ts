@@ -1,11 +1,11 @@
 export default {
   brand: { tagline: 'Agent Platform' },
   hero: {
-    title: 'Baiying Developer',
-    subtitle: 'Build, deploy and collaborate on AI Agents',
+    kicker: 'BAIYING CLAW',
+    title: 'Byclaw',
+    subtitle: 'Agent developer platform · Build, deploy and collaborate on AI Agents',
     docs: 'Developer Docs',
     ecosystem: 'Developer Ecosystem',
-    watchFull: 'Watch Full Video',
     docsSoon: 'Coming Soon',
   },
   login: {
@@ -34,9 +34,7 @@ export default {
     },
   },
   footer: {
-    docs: 'Developer Docs',
-    ecosystem: 'Developer Ecosystem',
-    copyright: '© Lenovo Baiying',
+    copyright: 'Byclaw Dev Team · 2026.7.17',
   },
   lang: { zh: '中', en: 'EN' },
 };

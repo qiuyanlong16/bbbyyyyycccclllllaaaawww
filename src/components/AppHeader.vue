@@ -12,7 +12,7 @@ const isEn = computed(() => locale.value === 'en');
 
 <template>
   <header class="app-header">
-    <img class="logo" src="/images/logo.png" alt="byclaw" />
+    <img class="logo" src="/images/logo.png" alt="Byclaw" />
     <div class="actions">
       <div class="lang-toggle">
         <button class="lang-zh" :class="{ active: isZh }" @click="locale !== 'zh' && toggleLocale()">
@@ -32,23 +32,23 @@ const isEn = computed(() => locale.value === 'en');
 
 <style scoped>
 .app-header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
+  position: relative;
+  flex: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 28px;
+  padding: 16px 28px;
   z-index: 20;
 }
 .logo {
-  height: 30px;
+  height: 32px;
   width: auto;
   display: block;
 }
 .actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 .lang-toggle {
   display: flex;
@@ -71,7 +71,9 @@ const isEn = computed(() => locale.value === 'en');
   color: var(--text-faint);
 }
 @media (max-width: 480px) {
-  .app-header { padding: 14px 16px; }
-  .logo { height: 24px; }
+  .app-header { padding: 12px 14px; }
+  .logo { height: 26px; }
+  .btn-ecosystem { padding: 7px 14px; font-size: 12px; }
+  .actions { gap: 10px; }
 }
 </style>
