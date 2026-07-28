@@ -24,13 +24,11 @@ const loginOpen = ref(false);
 .app {
   height: 100vh;
   height: 100dvh;
-  display: flex;
-  flex-direction: column;
+  position: relative;
   overflow: hidden;
 }
 .main {
-  flex: 1;
-  min-height: 0;
-  display: flex;
+  position: absolute;
+  inset: 0;
 }
 </style>

@@ -86,30 +86,31 @@ const useVideo = videoUrl && !reducedMotion && !saveData;
 .hero-content {
   position: relative;
   z-index: 2;
-  padding: 0 8vw;
-  max-width: 1100px;
+  padding: 0 6vw;
   width: 100%;
+  max-width: 1400px;
+  margin-left: 0;
   animation: fade-up 0.8s ease both;
 }
 .kicker {
-  font-size: clamp(12px, 1.6vw, 15px);
+  font-size: clamp(12px, 1.4vw, 14px);
   letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 .title {
-  font-size: clamp(44px, 9vw, 96px);
+  font-size: clamp(48px, 7vw, 88px);
   font-weight: 800;
   letter-spacing: -0.02em;
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   line-height: 1;
 }
 .subtitle {
-  font-size: clamp(14px, 1.9vw, 21px);
+  font-size: clamp(14px, 1.6vw, 18px);
   color: var(--text-muted);
-  margin: 0 0 30px;
-  max-width: 640px;
+  margin: 0 0 32px;
+  max-width: 520px;
 }
 .cta-row {
   display: flex;
@@ -125,7 +126,7 @@ const useVideo = videoUrl && !reducedMotion && !saveData;
 }
 @media (max-width: 768px) {
   .hero { align-items: flex-end; }
-  .hero-content { padding-bottom: 10vh; }
+  .hero-content { padding: 0 6vw 10vh; }
   .scrim {
     background: linear-gradient(
       180deg,
@@ -136,10 +137,10 @@ const useVideo = videoUrl && !reducedMotion && !saveData;
   }
 }
 @media (max-width: 480px) {
-  .hero-content { padding: 0 6vw; padding-bottom: 9vh; }
+  .hero-content { padding: 0 5vw 9vh; }
   .kicker { margin-bottom: 10px; letter-spacing: 0.24em; }
-  .title { font-size: clamp(40px, 13vw, 64px); margin-bottom: 10px; }
-  .subtitle { margin-bottom: 22px; }
+  .title { font-size: clamp(40px, 12vw, 64px); margin-bottom: 10px; }
+  .subtitle { margin-bottom: 22px; font-size: clamp(13px, 3.5vw, 16px); }
   .cta-row { gap: 10px; }
   .btn-glass { padding: 9px 16px; font-size: 13px; }
 }
