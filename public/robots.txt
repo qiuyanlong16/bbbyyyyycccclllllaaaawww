@@ -1,0 +1,31 @@
+# robots.txt for Byclaw (byclaw.help)
+# https://byclaw.help/robots.txt
+
+User-agent: *
+Allow: /
+
+# 允许所有主流搜索引擎
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Sogou web spider
+Allow: /
+
+User-agent: 360Spider
+Allow: /
+
+# 禁止访问的敏感路径（如有）
+# Disallow: /api/
+# Disallow: /admin/
+
+# Sitemap 位置
+Sitemap: https://byclaw.help/sitemap.xml
