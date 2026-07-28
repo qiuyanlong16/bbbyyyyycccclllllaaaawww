@@ -33,10 +33,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=byclaw-docs
-
-      - name: Deployment URL
-        run: |
-          echo "✅ Deployed to Cloudflare Pages"
-          echo "Production: https://byclaw.help"
-          echo "Preview: https://byclaw-docs-*.pages.dev"
+          command: pages deploy dist --project-name=byclaw-docs --branch=main
