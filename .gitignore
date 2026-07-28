@@ -6,6 +6,7 @@ dist-ssr
 .env.*.local
 .vite
 .superpowers
+.tmp-shots
 raw/*.mp4
 public/videos/*.mp4
 public/images/poster.png
