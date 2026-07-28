@@ -4,7 +4,24 @@ export async function onRequest(context) {
 
   // Proxy /api/* and /health to backend
   if (path.startsWith('/api/') || path === '/health') {
-    const backendUrl = 'http://10.10.10.1:8800' + path + url.search;
+    // BACKEND_URL should be set in Cloudflare Pages environment variables
+    // e.g. https://api.byclaw.help (through Cloudflare Tunnel)
+    const backendBase = context.env.BACKEND_URL || 'http://10.10.10.1:8800';
+    const backendUrl = backendBase.replace(/\/$/, '') + path + url.search;
+
+    // Handle CORS preflight
+    if (context.request.method === 'OPTIONS') {
+      return new Response(null, {
+        status: 204,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          'Access-Control-Max-Age': '86400',
+        },
+      });
+    }
+
     const proxyReq = new Request(backendUrl, {
       method: context.request.method,
       headers: context.request.headers,
@@ -25,7 +42,7 @@ export async function onRequest(context) {
         headers: headers,
       });
     } catch (err) {
-      return new Response(JSON.stringify({ error: 'Backend unavailable' }), {
+      return new Response(JSON.stringify({ error: 'Backend unavailable', detail: err.message }), {
         status: 502,
         headers: { 'Content-Type': 'application/json' },
       });
