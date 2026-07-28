@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { validateToken, type TokenError } from '../lib/gitlab';
 import { saveAuth } from '../composables/useAuth';
 
 const props = defineProps<{ open: boolean }>();
@@ -10,11 +9,9 @@ const emit = defineEmits<{ (e: 'close'): void }>();
 const { t, tm } = useI18n();
 const token = ref('');
 const submitting = ref(false);
-const errorKey = ref<TokenError | 'empty' | null>(null);
+const errorKey = ref<string | null>(null);
 const showHelp = ref(false);
 
-const gitlabUrl = import.meta.env.VITE_GITLAB_URL;
-const docsUrl = import.meta.env.VITE_DOCS_URL || '';
 const testToken = import.meta.env.DEV ? import.meta.env.VITE_TEST_TOKEN || '' : '';
 
 const errorMsg = computed(() => (errorKey.value ? t(`login.errors.${errorKey.value}`) : ''));
@@ -26,14 +23,24 @@ async function submit() {
     return;
   }
   submitting.value = true;
-  const result = await validateToken(gitlabUrl, token.value.trim());
-  submitting.value = false;
-  if (result.ok && result.user) {
-    saveAuth(token.value.trim(), result.user);
-    window.location.href = docsUrl || 'https://dawei.lenovo.com/partner';
-    return;
+  try {
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: token.value.trim() }),
+    });
+    const data = await res.json();
+    submitting.value = false;
+    if (data.ok && data.user) {
+      saveAuth(token.value.trim(), data.user);
+      window.location.href = '/home.html';
+      return;
+    }
+    errorKey.value = data.error || 'unknown';
+  } catch {
+    submitting.value = false;
+    errorKey.value = 'network';
   }
-  errorKey.value = result.error ?? 'unknown';
 }
 
 function onKey(e: KeyboardEvent) {

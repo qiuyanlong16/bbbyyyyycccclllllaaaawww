@@ -10,11 +10,11 @@ beforeEach(() => {
   vi.restoreAllMocks();
 });
 
-function makeFetch(status: number, body: unknown) {
+function makeFetch(body: unknown) {
   return vi.fn(
     async () =>
       new Response(JSON.stringify(body), {
-        status,
+        status: 200,
         headers: { 'Content-Type': 'application/json' },
       }),
   ) as unknown as typeof fetch;
@@ -27,8 +27,8 @@ describe('TokenLoginModal', () => {
     expect(w.find('.error').text()).toContain('请先输入');
   });
 
-  it('shows invalid error on 401', async () => {
-    global.fetch = makeFetch(401, { message: '401' });
+  it('shows error when API returns ok:false', async () => {
+    global.fetch = makeFetch({ ok: false, error: 'Token 无效或已过期' });
     const w = mount(TokenLoginModal, { props: { open: true }, global: { plugins: [i18n] } });
     await w.find('input').setValue('bad');
     await w.find('form').trigger('submit');
@@ -36,21 +36,16 @@ describe('TokenLoginModal', () => {
     expect(w.find('.error').text()).toContain('无效或已过期');
   });
 
-  it('stores auth and redirects on 200 active', async () => {
-    global.fetch = makeFetch(200, {
-      id: 2,
-      username: 'qiuyl4',
-      name: 'qiuyl4',
-      email: 'q@l.com',
-      state: 'active',
-      avatar_url: '',
-      web_url: '',
+  it('stores auth and redirects on ok:true', async () => {
+    global.fetch = makeFetch({
+      ok: true,
+      user: { name: '张三', username: 'zhangsan' },
     });
     const w = mount(TokenLoginModal, { props: { open: true }, global: { plugins: [i18n] } });
     await w.find('input').setValue('good');
     await w.find('form').trigger('submit');
     await flushPromises();
     // jsdom throws on navigation, but localStorage should be set
-    expect(localStorage.getItem('byclaw_auth')).toContain('qiuyl4');
+    expect(localStorage.getItem('byclaw_auth')).toContain('zhangsan');
   });
 });

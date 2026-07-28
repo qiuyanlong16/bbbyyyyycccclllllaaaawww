@@ -4,12 +4,12 @@ const KEY = 'byclaw_auth';
 
 export interface AuthState {
   token: string;
-  user: GitLabUser;
+  user: GitLabUser | { name: string; username: string };
   ts: number;
 }
 
-export function saveAuth(token: string, user: GitLabUser): void {
-  const state: AuthState = { token, user, ts: Date.now() };
+export function saveAuth(token: string, user: GitLabUser | { name: string; username: string }): void {
+  const state: AuthState = { token, user: user as GitLabUser, ts: Date.now() };
   localStorage.setItem(KEY, JSON.stringify(state));
 }
 
