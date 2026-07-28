@@ -5,7 +5,12 @@ const { t } = useI18n();
 
 defineEmits<{ (e: 'docs'): void }>();
 
-const ecosystemUrl = import.meta.env.VITE_ECOSYSTEM_URL || 'https://dawei.lenovo.com/partner';
+const ecosystemUrl = import.meta.env.VITE_ECOSYSTEM_URL || 'https://chat.z.ai/auth';
+
+// 视频 CDN 地址（通过 Cloudflare Pages 环境变量配置）
+// 在 Cloudflare Dashboard → Pages → byclaw-docs → Settings → Environment variables
+// 添加：VITE_VIDEO_URL = 你的视频 CDN 地址
+const videoUrl = import.meta.env.VITE_VIDEO_URL || '';
 
 const reducedMotion =
   typeof window !== 'undefined' &&
@@ -13,7 +18,7 @@ const reducedMotion =
 const saveData =
   typeof navigator !== 'undefined' &&
   (navigator as unknown as { connection?: { saveData?: boolean } }).connection?.saveData;
-const useVideo = !reducedMotion && !saveData;
+const useVideo = videoUrl && !reducedMotion && !saveData;
 </script>
 
 <template>
@@ -21,7 +26,7 @@ const useVideo = !reducedMotion && !saveData;
     <video
       v-if="useVideo"
       class="hero-video"
-      src="/videos/hero-loop.mp4"
+      :src="videoUrl"
       poster="/images/poster.png"
       autoplay
       muted
@@ -70,9 +75,7 @@ const useVideo = !reducedMotion && !saveData;
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  /* Source has ~96px baked-in pillarbox bars each side; scale up so cover
-     crops them off-screen instead of framing the hero in black. */
-  transform: scale(1.13);
+  transform: scale(1.05);
 }
 .scrim {
   position: absolute;
@@ -121,8 +124,6 @@ const useVideo = !reducedMotion && !saveData;
   to { opacity: 1; transform: translateY(0); }
 }
 @media (max-width: 768px) {
-  /* Drop the content toward the lower third so the video/animation breathes
-     above it, and lighten the upper scrim to let that animation read through. */
   .hero { align-items: flex-end; }
   .hero-content { padding-bottom: 10vh; }
   .scrim {
