@@ -5,7 +5,7 @@ export default {
     title: 'Byclaw',
     subtitle: '智能体开发者平台 · 构建、部署与协作的 AI Agent 工作台',
     docs: '开发者文档',
-    ecosystem: '开发者生态',
+    ecosystem: '申请成为伙伴',
     docsSoon: '即将上线',
   },
   login: {

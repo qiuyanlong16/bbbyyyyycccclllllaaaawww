@@ -5,7 +5,7 @@ const { t } = useI18n();
 
 defineEmits<{ (e: 'docs'): void }>();
 
-const ecosystemUrl = import.meta.env.VITE_ECOSYSTEM_URL || 'https://chat.z.ai/auth';
+const ecosystemUrl = import.meta.env.VITE_ECOSYSTEM_URL || 'https://dawei.lenovo.com/partner';
 
 // 视频 CDN 地址（通过 Cloudflare Pages 环境变量配置）
 // 在 Cloudflare Dashboard → Pages → byclaw-docs → Settings → Environment variables

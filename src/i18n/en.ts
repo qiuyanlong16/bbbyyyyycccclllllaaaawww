@@ -5,7 +5,7 @@ export default {
     title: 'Byclaw',
     subtitle: 'Agent developer platform · Build, deploy and collaborate on AI Agents',
     docs: 'Developer Docs',
-    ecosystem: 'Developer Ecosystem',
+    ecosystem: 'Become a Partner',
     docsSoon: 'Coming Soon',
   },
   login: {
