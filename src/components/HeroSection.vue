@@ -8,8 +8,6 @@ defineEmits<{ (e: 'docs'): void }>();
 const ecosystemUrl = import.meta.env.VITE_ECOSYSTEM_URL || 'https://dawei.lenovo.com/partner';
 
 // 视频 CDN 地址（通过 Cloudflare Pages 环境变量配置）
-// 在 Cloudflare Dashboard → Pages → byclaw-docs → Settings → Environment variables
-// 添加：VITE_VIDEO_URL = 你的视频 CDN 地址
 const videoUrl = import.meta.env.VITE_VIDEO_URL || '';
 
 const reducedMotion =
@@ -86,31 +84,30 @@ const useVideo = videoUrl && !reducedMotion && !saveData;
 .hero-content {
   position: relative;
   z-index: 2;
-  padding: 0 6vw;
+  padding: 0 8vw;
+  max-width: 1200px;
   width: 100%;
-  max-width: 1400px;
-  margin-left: 0;
   animation: fade-up 0.8s ease both;
 }
 .kicker {
-  font-size: clamp(12px, 1.4vw, 14px);
+  font-size: clamp(12px, 1.5vw, 14px);
   letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 .title {
-  font-size: clamp(48px, 7vw, 88px);
+  font-size: clamp(44px, 8vw, 88px);
   font-weight: 800;
   letter-spacing: -0.02em;
-  margin: 0 0 16px;
+  margin: 0 0 14px;
   line-height: 1;
 }
 .subtitle {
-  font-size: clamp(14px, 1.6vw, 18px);
+  font-size: clamp(14px, 1.8vw, 20px);
   color: var(--text-muted);
-  margin: 0 0 32px;
-  max-width: 520px;
+  margin: 0 0 30px;
+  max-width: 580px;
 }
 .cta-row {
   display: flex;
