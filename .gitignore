@@ -8,8 +8,6 @@ dist-ssr
 .superpowers
 .tmp-shots
 raw/*.mp4
-public/videos/*.mp4
-public/images/poster.png
 *.log
 .DS_Store
 
