@@ -70,6 +70,9 @@ const useVideo = !reducedMotion && !saveData;
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  /* Source has ~96px baked-in pillarbox bars each side; scale up so cover
+     crops them off-screen instead of framing the hero in black. */
+  transform: scale(1.13);
 }
 .scrim {
   position: absolute;
@@ -117,8 +120,22 @@ const useVideo = !reducedMotion && !saveData;
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
+@media (max-width: 768px) {
+  /* Drop the content toward the lower third so the video/animation breathes
+     above it, and lighten the upper scrim to let that animation read through. */
+  .hero { align-items: flex-end; }
+  .hero-content { padding-bottom: 10vh; }
+  .scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(2, 2, 15, 0.26) 0%,
+      rgba(2, 2, 15, 0.3) 40%,
+      rgba(2, 2, 15, 0.88) 100%
+    );
+  }
+}
 @media (max-width: 480px) {
-  .hero-content { padding: 0 6vw; }
+  .hero-content { padding: 0 6vw; padding-bottom: 9vh; }
   .kicker { margin-bottom: 10px; letter-spacing: 0.24em; }
   .title { font-size: clamp(40px, 13vw, 64px); margin-bottom: 10px; }
   .subtitle { margin-bottom: 22px; }

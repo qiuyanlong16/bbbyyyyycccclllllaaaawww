@@ -10,6 +10,10 @@
   --glass-strong: rgba(255, 255, 255, 0.92);
   --nav-btn: #474747;
   --danger: #e60012;
+  /* Brand accent — teal/cyan, sampled from the Byclaw tree logo */
+  --accent: #4fe3d2;
+  --accent-deep: #16a99a;
+  --accent-glow: rgba(79, 227, 210, 0.45);
   --radius-pill: 40px;
   --radius-card: 16px;
   --scrim: linear-gradient(180deg, rgba(2, 2, 15, 0.45), rgba(2, 2, 15, 0.82));
