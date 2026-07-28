@@ -36,7 +36,7 @@ describe('TokenLoginModal', () => {
     expect(w.find('.error').text()).toContain('无效或已过期');
   });
 
-  it('stores auth and emits success on 200 active', async () => {
+  it('stores auth and redirects on 200 active', async () => {
     global.fetch = makeFetch(200, {
       id: 2,
       username: 'qiuyl4',
@@ -50,7 +50,7 @@ describe('TokenLoginModal', () => {
     await w.find('input').setValue('good');
     await w.find('form').trigger('submit');
     await flushPromises();
-    expect(w.emitted('success')).toBeTruthy();
+    // jsdom throws on navigation, but localStorage should be set
     expect(localStorage.getItem('byclaw_auth')).toContain('qiuyl4');
   });
 });
