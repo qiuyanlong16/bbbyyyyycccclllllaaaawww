@@ -5,7 +5,7 @@ const { t } = useI18n();
 
 defineEmits<{ (e: 'docs'): void }>();
 
-const ecosystemUrl = import.meta.env.VITE_ECOSYSTEM_URL || 'https://chat.z.ai/auth';
+const ecosystemUrl = import.meta.env.VITE_ECOSYSTEM_URL || 'https://dawei.lenovo.com/partner';
 
 const reducedMotion =
   typeof window !== 'undefined' &&

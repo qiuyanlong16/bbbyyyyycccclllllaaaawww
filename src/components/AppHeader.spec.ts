@@ -22,11 +22,8 @@ describe('AppHeader', () => {
     expect(w.find('button.lang-en').classes()).toContain('active');
   });
 
-  it('ecosystem link points to chat.z.ai/auth', () => {
+  it('does not render ecosystem button', () => {
     const w = mount(AppHeader, { global: { plugins: [i18n] } });
-    const a = w.find('a.btn-ecosystem');
-    expect(a.exists()).toBe(true);
-    expect(a.attributes('href')).toBe('https://chat.z.ai/auth');
-    expect(a.attributes('target')).toBe('_blank');
+    expect(w.find('.btn-ecosystem').exists()).toBe(false);
   });
 });

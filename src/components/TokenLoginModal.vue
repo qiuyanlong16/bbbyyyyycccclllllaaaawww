@@ -30,7 +30,7 @@ async function submit() {
   submitting.value = false;
   if (result.ok && result.user) {
     saveAuth(token.value.trim(), result.user);
-    window.location.href = docsUrl || 'https://chat.z.ai/auth';
+    window.location.href = docsUrl || 'https://dawei.lenovo.com/partner';
     return;
   }
   errorKey.value = result.error ?? 'unknown';
